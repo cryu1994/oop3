@@ -1,4 +1,4 @@
-function VehicleConstructor(Name, Wheels, Speed, Passengers){
+function VehicleConstructor(Name, Wheels, Passengers, Speed){
     if(!(this instanceof VehicleConstructor)){
         console.log("returning the cars and more things");
         return new VehichelConstructor(Name, Wheels, Passengers, Speed);
@@ -11,7 +11,7 @@ function VehicleConstructor(Name, Wheels, Speed, Passengers){
     this.passengers = Passengers;
     this.vin = createvin();
     VehicleConstructor.prototype.noise = function(){
-        var noise = "Hi, I am a " + this.name + ". I have " + this.wheels + " wheels and I can go up to " + this.speed + ". I can have " + this.passengers + " passengers";
+        var noise = "Hi, I am a " + this.name + ". I have " + this.wheels + " wheels and I can carry " + this.passengers + " passengers. I can go up to " + this.speed + " MPH";
         console.log(noise);
         return this;
     };
@@ -28,16 +28,16 @@ function VehicleConstructor(Name, Wheels, Speed, Passengers){
         this.update_distance();
         return this;
     };
-    function createvin () {
+    function createvin() {
         var vin = "";
-        for(var i = 0; i < 7; i++){
+        for(var i = 0; i < 16; i+=1){
             vin += word[Math.floor(Math.random()* 35)];
-            console.log(vin);
         }
+        console.log(vin);
         return vin;
     }
 
 }
 
 var car = new VehicleConstructor('Audi', 4, 4 ,25);
-car.move().check_mile();
+car.move().check_mile().update_distance();
